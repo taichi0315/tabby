@@ -6,7 +6,10 @@ trait OptionInstances {
     new OptionSemigroup[A]
 
   implicit val tabbyStdFunctorForOption: Functor[Option] = new Functor[Option] {
-    def map[A, B](fa: Option[A])(f: A => B): Option[B] = fa.map(f)
+    def map[A, B](fa: Option[A])(f: A => B): Option[B] = fa match {
+      case None    => None
+      case Some(a) => Some(f(a))
+    }
   }
 }
 
