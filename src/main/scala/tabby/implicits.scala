@@ -4,3 +4,4 @@ object implicits
   extends syntax.SemigroupSyntax
   with instances.IntInstances
   with instances.OptionInstances
+  with instances.ListInstances
