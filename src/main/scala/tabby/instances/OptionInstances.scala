@@ -4,6 +4,10 @@ package instances
 trait OptionInstances {
   implicit def tabbyStdSemigroupForOption[A: Semigroup]: Semigroup[Option[A]] =
     new OptionSemigroup[A]
+
+  implicit val tabbyStdFunctorForOption: Functor[Option] = new Functor[Option] {
+    def map[A, B](fa: Option[A])(f: A => B): Option[B] = fa.map(f)
+  }
 }
 
 class OptionSemigroup[A](implicit A: Semigroup[A]) extends Semigroup[Option[A]] {
