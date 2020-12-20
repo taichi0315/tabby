@@ -1,4 +1,4 @@
-package example
+package example.semigroup
 
 import tabby.Semigroup
 
