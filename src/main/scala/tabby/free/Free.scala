@@ -2,6 +2,7 @@ package tabby
 package free
 
 sealed trait Free[S[_], A] {
+  import Free.{Pure, FlatMapped}
 
   def map[B](f: A => B)(implicit S: Functor[S]): Free[S, B] = flatMap(a => Pure(f(a)))
 
@@ -12,5 +13,9 @@ sealed trait Free[S[_], A] {
     }
 }
 
-case class Pure[S[_], A](a: A) extends Free[S, A]
-case class FlatMapped[S[_], A](ff: S[Free[S, A]]) extends Free[S, A]
+object Free {
+  case class Pure[S[_], A](a: A) extends Free[S, A]
+  case class FlatMapped[S[_], A](ff: S[Free[S, A]]) extends Free[S, A]
+}
+
+
