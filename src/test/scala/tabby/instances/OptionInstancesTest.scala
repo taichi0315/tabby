@@ -2,6 +2,7 @@ package tabby.instances
 
 import org.scalatest.funsuite.AnyFunSuite
 import tabby._
+import tabby.free._
 import tabby.implicits._
 
 class OptionInstancesTest extends AnyFunSuite {
